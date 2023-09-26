@@ -1,6 +1,11 @@
 const urlParams = new URLSearchParams(window.location.search);
 
-const sdUrl = urlParams.get('sdurl') || 'http://localhost:7860';
+const sdUrl = urlParams.get('sdurl');
+
+if (!sdUrl) {
+    console.log(sdUrl);
+    alert(`No stable diffusion url provided. Please provide one by setting the 'sdurl' url parameter. e.g ${window.location.href}?sdurl=http:localhost:7860`);
+}
 
 const select = (query) => document.querySelector(query);
 

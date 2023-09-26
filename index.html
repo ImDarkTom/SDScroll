@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Scroll</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <div id="results-list"></div>
+    <div id="bottom-row">
+        <button id="new-image-button" onclick="loadNewImage()"><img src="img/generate.svg"><span>Generate</span></button>
+        <button id="collapse-menu-button" onclick="toggleSettings()"><img src="img/collapse.svg"></button>
+        <div id="collapsable-settings">
+
+            <label for="prompt-input">
+                <span>Prompt</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="text" id="prompt-input" placeholder="Prompt..." value="beautiful scenery, nature, night, ">
+        
+            <label for="negprompt-input">
+                <span>Negative Prompt</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="text" id="negprompt-input" placeholder="Negative prompt..." value="text, watermark">
+        
+            <label for="width-input">
+                <span>Width</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="number" id="width-input" min="0" value="512">
+        
+            <label for="height-input">
+                <span>Height</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="number" id="height-input" min="1" value="683">
+
+            <label for="cfg-input">
+                <span>CFG Scale</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="number" id="cfg-input" placeholder="CFG Scale..." min="1" value="6">
+
+            <label for="sampler-input">
+                <span>Sampler</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="text" id="sampler-input" placeholder="Sampler..." value="DDIM">
+
+            <label for="default-steps-input">
+                <span>Default Steps</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="number" id="default-steps-input" min="1" value="8">
+
+            <label for="enhanced-steps-input">
+                <span>Enhanced Steps</span>
+                <img src="img/collapse.svg">
+            </label>
+            <input type="number" id="enhanced-steps-input" min="1" value="25">
+        </div>
+    </div>
+
+    <template id="image-result-template">
+        <div class="result-image-container">
+            <img src="/img/loading.png" alt="Loading..." class="result-image">
+            <button class="enhance-button result-button" onclick="enhanceImage(this)"><img src="img/enhance.svg" alt="Enhance"></button>
+            <button class="download-button result-button" onclick="downloadImage(this)"><img src="img/download.svg" alt="Enhance"></button>
+        </div>
+    </template>
+</body>
+</html>

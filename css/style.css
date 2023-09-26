@@ -1,0 +1,132 @@
+:root {
+    --text-color: white;
+    --bg-color: white;
+    --bg-lighter: rgb(205, 205, 205)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: Arial, Helvetica, sans-serif;
+    width: clamp(0px, 100%, 800px);
+    margin: 0 auto;
+}
+
+.result-image-container {
+    width: 98%;
+    padding: 1%;
+    box-sizing: content-box;
+    position: relative;
+}
+
+.result-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.result-image.loading {
+    filter: brightness(0.6);
+}
+
+.result-button {
+    height: 1rem;
+    width: 1rem;
+    padding: 1rem;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    right: 1rem;
+}
+
+.enhance-button {
+    bottom: 5rem;
+}
+
+.result-button:disabled {
+    filter: brightness(0.6);
+}
+
+.download-button {
+    bottom: 1rem;
+}
+
+#bottom-row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: var(--bg-lighter);
+    border-radius: 1.5rem;
+    margin: 1%;
+    width: 98%;
+}
+
+#bottom-row input {
+    flex-grow: 1;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 1.5rem;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+#bottom-row #new-image-button {
+    border: 0;
+    color: var(--text-color);
+    padding: 1rem;
+    margin: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#new-image-button {
+    flex-grow: 1;
+    background-color: mediumseagreen;
+}
+
+#new-image-button img {
+    padding-right: 1ch;
+    height: auto;
+}
+
+#collapsable-settings {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#collapse-menu-button {
+    background-color: transparent;
+    border: none;
+    margin: 0.5rem;
+}
+
+#collapsable-settings label {
+    color: var(--text-color);
+    margin: 1rem 0 0 1rem;
+    user-select: none;
+}
+
+#collapsable-settings > label > img {
+    padding-left: 1ch;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: rgb(21, 21, 21);
+        --bg-lighter: rgb(71, 71, 71);
+    }
+  }

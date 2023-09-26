@@ -72,8 +72,6 @@ async function loadNewImage() {
 
     imageList.appendChild(clone);
 
-    window.scrollTo(0, document.body.scrollHeight);
-
     const imageReq = await getImage(promptInput.value, negPromptInput.value, -1, defaultSteps, cfgInput.value, width, height, samplerInput.value);
 
     resultImgElem.src = imageReq.url;

@@ -22,8 +22,8 @@ const samplerInput = select('#sampler-input');
 const modelInput = select('#model-input');
 const cfgInput = select('#cfg-input');
 
-const defaultSteps = select('#default-steps-input').value;
-const enhancedSteps = select('#enhanced-steps-input').value;
+const defaultStepsInput = select('#default-steps-input');
+const enhancedStepsInput = select('#enhanced-steps-input');
 
 const collapsableSettings = select('#collapsable-settings');
 const collapseMenuBtnImg = select('#collapse-menu-button img');
@@ -92,7 +92,7 @@ async function loadNewImage() {
 
     }, 1000);
 
-    const imageReq = await getImage(promptInput.value, negPromptInput.value, -1, defaultSteps, cfgInput.value, width, height, samplerInput.value);
+    const imageReq = await getImage(promptInput.value, negPromptInput.value, -1, defaultStepsInput.value, cfgInput.value, width, height, samplerInput.value);
 
     clearInterval(interval);
 
@@ -117,7 +117,7 @@ async function enhanceImage(elem) {
     const paramsString = resultImageElem.dataset.params;
     const params = JSON.parse(paramsString);
     
-    const enhanced = await getImage(params.prompt, params.negative_prompt, params.seed, enhancedSteps, params.cfg_scale, params.width, params.height, params.sampler_name);
+    const enhanced = await getImage(params.prompt, params.negative_prompt, params.seed, enhancedStepsInput.value, params.cfg_scale, params.width, params.height, params.sampler_name);
 
     resultImageElem.src = enhanced.url;
     resultImageElem.classList.remove('loading');

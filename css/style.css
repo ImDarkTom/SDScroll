@@ -80,6 +80,10 @@ body {
     background-color: var(--bg-color);
 }
 
+#bottom-row input:invalid {
+    box-shadow: 0 0 2px 2px red inset;
+}
+
 #bottom-row #new-image-button {
     border: 0;
     color: var(--text-color);
@@ -112,6 +116,15 @@ body {
     background-color: transparent;
     border: none;
     margin: 0.5rem;
+}
+
+#size-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+#size-inputs input {
+    width: 50%;
 }
 
 #collapsable-settings label {

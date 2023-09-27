@@ -7,6 +7,8 @@ if (!sdUrl) {
     alert(`No stable diffusion url provided. Please provide one by setting the 'sdurl' url parameter. e.g ${window.location.href}?sdurl=http:localhost:7860`);
 }
 
+const windowUrl = window.location.href.split('?')[0];
+
 const select = (query) => document.querySelector(query);
 
 const imageResultTemplate = select('#image-result-template');
@@ -30,13 +32,14 @@ const settingsLabels = document.querySelectorAll('#collapsable-settings label');
 settingsLabels.forEach((label) => {
     label.addEventListener('click', () => {
         const attachedInput = document.querySelector(`#${label.getAttribute('for')}`);
+        const imageIcon = label.querySelector('img');
 
         if (attachedInput.style.display === "none") {
-            attachedInput.style.display = "block";
-            label.querySelector('img').src = "/img/collapse.svg";
+            attachedInput.style.display = ""; //Clear JS set styling
+            imageIcon.src = `${windowUrl}/img/collapse.svg`;
         } else {
             attachedInput.style.display = "none";
-            label.querySelector('img').src = "/img/expand.svg";
+            imageIcon.src = `${windowUrl}/img/expand.svg`;
         }
     });
 });
@@ -45,12 +48,12 @@ function toggleSettings() {
     if (collapsableSettings.style.display === "none") {
 
         collapsableSettings.style.display = "flex";
-        collapseMenuBtnImg.src = "img/collapse.svg";
+        collapseMenuBtnImg.src = `${windowUrl}/img/collapse.svg`;
 
     } else {
 
         collapsableSettings.style.display = "none";
-        collapseMenuBtnImg.src = "img/expand.svg";
+        collapseMenuBtnImg.src = `${windowUrl}/img/expand.svg`;
 
     }
 }

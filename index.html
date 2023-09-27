@@ -26,18 +26,15 @@
                 <img src="img/collapse.svg">
             </label>
             <input type="text" id="negprompt-input" placeholder="Negative prompt..." value="text, watermark">
-        
-            <label for="width-input">
-                <span>Width</span>
+            
+            <label for="size-inputs">
+                <span>Size</span>
                 <img src="img/collapse.svg">
             </label>
-            <input type="number" id="width-input" min="0" value="512">
-        
-            <label for="height-input">
-                <span>Height</span>
-                <img src="img/collapse.svg">
-            </label>
-            <input type="number" id="height-input" min="1" value="683">
+            <div id="size-inputs">
+                <input type="number" id="width-input" min="0" value="512">
+                <input type="number" id="height-input" min="1" value="683">
+            </div>
 
             <label for="cfg-input">
                 <span>CFG Scale</span>

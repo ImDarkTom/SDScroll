@@ -69,13 +69,34 @@ async function loadNewImage() {
     enhanceBtn.setAttribute('disabled', true);
     downloadBtn.setAttribute('disabled', true);
 
+    const loadingSvgElem = clone.querySelector('.loading-image')
     const resultImgElem = clone.querySelector('.result-image');
 
+    resultImgElem.style.display = "none";
+
+    loadingSvgElem.style['aspect-ratio'] = `${width} / ${height}`;
     resultImgElem.style['aspect-ratio'] = `${width} / ${height}`;
 
     imageList.appendChild(clone);
 
+    const percentageText = loadingSvgElem.querySelector('text');
+
+    //Get image
+    const interval = setInterval( async () => {
+
+        const response = await fetch(`${sdUrl}/sdapi/v1/progress?skip_current_image=false`, { method: "GET" });
+        const json = await response.json();
+
+        percentageText.textContent = `${json.progress*100}%`;
+
+    }, 1000);
+
     const imageReq = await getImage(promptInput.value, negPromptInput.value, -1, defaultSteps, cfgInput.value, width, height, samplerInput.value);
+
+    clearInterval(interval);
+
+    loadingSvgElem.style.display = "none";
+    resultImgElem.style.display = "";
 
     resultImgElem.src = imageReq.url;
     resultImgElem.dataset.params = JSON.stringify(imageReq.returned_info);

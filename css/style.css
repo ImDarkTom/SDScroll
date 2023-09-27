@@ -1,5 +1,5 @@
 :root {
-    --text-color: white;
+    --text-color: black;
     --bg-color: white;
     --bg-lighter: rgb(205, 205, 205)
 }
@@ -22,6 +22,15 @@ body {
     padding: 1%;
     box-sizing: content-box;
     position: relative;
+}
+
+.loading-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1rem;
+    color: white;
+    background-color: var(--bg-lighter);
 }
 
 .result-image {
@@ -118,12 +127,12 @@ body {
     margin: 0.5rem;
 }
 
-#size-inputs {
+.dual-inputs {
     display: flex;
     flex-direction: row;
 }
 
-#size-inputs input {
+.dual-inputs input  {
     width: 50%;
 }
 
@@ -139,6 +148,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
     :root {
+        --text-color: white;
         --bg-color: rgb(21, 21, 21);
         --bg-lighter: rgb(71, 71, 71);
     }

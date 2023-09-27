@@ -28,10 +28,10 @@
             <input type="text" id="negprompt-input" placeholder="Negative prompt..." value="text, watermark">
             
             <label for="size-inputs">
-                <span>Size</span>
+                <span>Size (width) (height)</span>
                 <img src="img/collapse.svg">
             </label>
-            <div id="size-inputs">
+            <div id="size-inputs" class="dual-inputs">
                 <input type="number" id="width-input" min="0" value="512">
                 <input type="number" id="height-input" min="1" value="683">
             </div>
@@ -42,29 +42,27 @@
             </label>
             <input type="number" id="cfg-input" placeholder="CFG Scale..." min="1" value="6">
 
+            <label for="steps-inputs">
+                <span>Steps (default) (enhanced)</span>
+                <img src="img/collapse.svg">
+            </label>
+            <div id="steps-inputs" class="dual-inputs">
+                <input type="number" id="default-steps-input" min="1" value="8">
+                <input type="number" id="enhanced-steps-input" min="1" value="25">
+            </div>
+
             <label for="sampler-input">
                 <span>Sampler</span>
                 <img src="img/collapse.svg">
             </label>
-            <input type="text" id="sampler-input" placeholder="Sampler..." value="DDIM">
-
-            <label for="default-steps-input">
-                <span>Default Steps</span>
-                <img src="img/collapse.svg">
-            </label>
-            <input type="number" id="default-steps-input" min="1" value="8">
-
-            <label for="enhanced-steps-input">
-                <span>Enhanced Steps</span>
-                <img src="img/collapse.svg">
-            </label>
-            <input type="number" id="enhanced-steps-input" min="1" value="25">
+            <input type="" id="sampler-input" placeholder="Sampler..." value="DDIM">
         </div>
     </div>
 
     <template id="image-result-template">
         <div class="result-image-container">
-            <img src="/img/loading.png" alt="Loading..." class="result-image">
+            <img class="result-image">
+            <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg" class="loading-image"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">0%</text></svg>
             <button class="enhance-button result-button" onclick="enhanceImage(this)"><img src="img/enhance.svg" alt="Enhance"></button>
             <button class="download-button result-button" onclick="downloadImage(this)"><img src="img/download.svg" alt="Enhance"></button>
         </div>

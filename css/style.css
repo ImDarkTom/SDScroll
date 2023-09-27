@@ -77,8 +77,9 @@ body {
     width: 98%;
 }
 
-#bottom-row input {
-    flex-grow: 1;
+#bottom-row input,
+#bottom-row select {
+    width: calc(100% - 1rem);
     padding: 1rem;
     margin: 0.5rem;
     border-radius: 1.5rem;
@@ -87,6 +88,10 @@ body {
     outline: none;
     color: var(--text-color);
     background-color: var(--bg-color);
+}
+
+#model-input.loading {
+    filter: brightness(1.5);
 }
 
 #bottom-row input:invalid {

@@ -55,7 +55,13 @@
                 <span>Sampler</span>
                 <img src="img/collapse.svg">
             </label>
-            <input type="" id="sampler-input" placeholder="Sampler..." value="DDIM">
+            <select id="sampler-input"></select>
+
+            <label for="model-input">
+                <span>Model</span>
+                <img src="img/collapse.svg">
+            </label>
+            <select id="model-input" onchange="changeCheckpoint()"></select>
         </div>
     </div>
 

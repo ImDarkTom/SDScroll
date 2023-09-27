@@ -19,6 +19,7 @@ const negPromptInput = select('#negprompt-input');
 const widthInput = select('#width-input');
 const heightInput = select('#height-input');
 const samplerInput = select('#sampler-input');
+const modelInput = select('#model-input');
 const cfgInput = select('#cfg-input');
 
 const defaultSteps = select('#default-steps-input').value;
@@ -168,3 +169,56 @@ async function getImage(prompt, negPrompt = "", seed = -1, steps = 20, cfgScale 
 
     return {url: blobUrl, returned_info: returnedInfo};
 }
+
+async function loadSamplersList() {
+    const response = await fetch(`${sdUrl}/sdapi/v1/samplers`);
+    const json = await response.json();
+
+    for (const sampler of json) {
+        const elem = document.createElement('option');
+        elem.value = sampler.name;
+        elem.textContent = sampler.name;
+
+        samplerInput.appendChild(elem);
+    }
+}
+
+async function loadCheckpointsList() {
+    const response = await fetch(`${sdUrl}/sdapi/v1/sd-models`);
+    const json = await response.json();
+
+    for (const sampler of json) {
+        const title = sampler.title;
+
+        const elem = document.createElement('option');
+        elem.value = title;
+        elem.textContent = title;
+
+        modelInput.appendChild(elem);
+    }
+}
+
+async function changeCheckpoint() {
+    modelInput.classList.add('loading');
+
+    const checkpointName = modelInput.value;
+
+    const optionsResponse = await fetch(`${sdUrl}/sdapi/v1/options`, {method: "GET"});
+    const optionsJson = await optionsResponse.json();
+
+    optionsJson["sd_model_checkpoint"] = checkpointName;
+
+    await fetch(`${sdUrl}/sdapi/v1/options`, {
+        method: "POST",
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(optionsJson),
+    });
+
+    modelInput.classList.remove('loading');
+}
+
+loadSamplersList();
+loadCheckpointsList();
